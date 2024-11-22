@@ -1,4 +1,4 @@
-'use client'
+/* 'use client'
 
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
@@ -6,6 +6,13 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
+
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import AuthForm from './AuthForm'; // Ajusta la ruta según tu estructura de carpetas
+import Dashboard from './Dashboard'; // Ajusta la ruta según tu estructura de carpetas
+import Onboarding from './Onboarding'; // Ajusta la ruta según tu estructura de carpetas
+
+
 
 export default function AuthForm() { // Cambiar el nombre del componente aquí
   const [isLoading, setIsLoading] = useState(false);
@@ -124,5 +131,22 @@ export default function AuthForm() { // Cambiar el nombre del componente aquí
         </TabsContent>
       </Tabs>
     </div>
+  );
+}
+ */
+
+
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import AuthForm from './AuthForm';
+import Dashboard from './Dashboard';
+
+export default function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<AuthForm />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </Router>
   );
 }

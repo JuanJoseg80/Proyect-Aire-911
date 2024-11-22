@@ -1,21 +1,24 @@
-'use client'
-
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
 
-export default function Component() {
+export default function AuthForm() {
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = async (e) => { // Eliminar el tipo de evento
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simular envío
-    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    // Simulación del inicio de sesión
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     setIsLoading(false);
+
+    navigate('/dashboard'); // Redirige al dashboard
   };
 
   return (
@@ -59,8 +62,14 @@ export default function Component() {
                 >
                   {isLoading ? "Iniciando sesión..." : "Iniciar Sesión"}
                 </Button>
-                <div className="text-sm text-center text-gray-500">
-                  <a href="#" className="hover:text-gray-800">¿Olvidaste tu contraseña?</a>
+                <div className="text-sm text-center text-gray-500 mt-4">
+                  <a
+                    href="#"
+                    onClick={() => navigate('/dashboard')}
+                    className="hover:text-gray-800"
+                  >
+                    Continuar sin iniciar sesión
+                  </a>
                 </div>
               </form>
             </CardContent>
